@@ -189,6 +189,7 @@ L<File::Path>,
 L<File::Spec::Functions>,
 L<File::Temp>,
 L<Getopt::Std>,
+L<IO::Barf>,
 L<Readonly>.
 
 =head1 REPOSITORY

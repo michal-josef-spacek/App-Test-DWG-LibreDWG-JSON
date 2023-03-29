@@ -30,6 +30,7 @@ requires:
   File::Spec::Functions: 0
   File::Temp: 0
   Getopt::Std: 0
+  IO::Barf: 0
   Readonly: 0
   perl: 5.6.0
 resources:

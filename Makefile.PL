@@ -25,6 +25,7 @@ requires 'File::Path' => 0;
 requires 'File::Spec::Functions' => 0;
 requires 'File::Temp' => 0;
 requires 'Getopt::Std' => 0;
+requires 'IO::Barf' => 0;
 requires 'Readonly' => 0;
 resources 'bugtracker' => 'https://github.com/michal-josef-spacek/App-Test-DWG-LibreDWG-JSON/issues',
 resources 'homepage' => 'https://github.com/michal-josef-spacek/App-Test-DWG-LibreDWG-JSON';
