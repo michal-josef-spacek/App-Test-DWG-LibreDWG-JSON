@@ -55,7 +55,7 @@ sub run {
 	if (defined $tmp_dir && ! -d $tmp_dir) {
 		mkpath($tmp_dir);
 	}
-	if (! -d $tmp_dir || ! defined $tmp_dir) {
+	if (! defined $tmp_dir || ! -d $tmp_dir) {
 		$tmp_dir = tempdir(CLEANUP => 1);
 	}
 	$self->{'_tmp_dir'} = $tmp_dir;
