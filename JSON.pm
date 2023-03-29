@@ -79,7 +79,7 @@ sub run {
 	# Convert new dwg file to JSON.
 	my $json_file_second = catfile($tmp_dir, 'second.json');
 	my $dwg_to_json_second = "$DR -o $json_file_second $dwg_file_second";
-	if ($self->_exec($dwg_to_json_second)) {
+	if ($self->_exec($dwg_to_json_second, 'dwg_to_json_second')) {
 		return 1;
 	}
 
