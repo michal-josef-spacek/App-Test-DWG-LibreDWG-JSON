@@ -19,8 +19,10 @@ Makefile.PL
 MANIFEST			This list of files
 META.yml
 README
+SIGNATURE
 t/App-Test-DWG-LibreDWG-JSON/01-use.t
 t/App-Test-DWG-LibreDWG-JSON/02-version.t
 t/App-Test-DWG-LibreDWG-JSON/03-new.t
+t/App-Test-DWG-LibreDWG-JSON/04-run.t
 xt/App-Test-DWG-LibreDWG-JSON/01-pod_coverage.t
 xt/App-Test-DWG-LibreDWG-JSON/02-pod.t
