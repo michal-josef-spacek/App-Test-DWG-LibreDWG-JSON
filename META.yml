@@ -26,8 +26,13 @@ no_index:
     - t
     - xt
 requires:
+  Capture::Tiny: 0
+  File::Copy: 0
+  File::Path: 0
+  File::Spec::Functions: 0
   File::Temp: 0
   Getopt::Std: 0
+  Readonly: 0
   perl: 5.6.0
 resources:
   bugtracker: https://github.com/michal-josef-spacek/App-Test-DWG-LibreDWG-JSON/issues
