@@ -89,7 +89,8 @@ sub run {
 	}
 
 	# Compare JSON files.
-	# TODO
+	my $diff = "diff $json_file_first $json_file_second";
+	system($diff);
 
 	return 0;
 }
