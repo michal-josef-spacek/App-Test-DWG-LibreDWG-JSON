@@ -171,7 +171,8 @@ Returns 1 for error, 0 for success.
 
  # Arguments.
  @ARGV = (
-         'Library',
+         '-v9',
+         'TODO_DWG_FILE',
  );
 
  # Run.
