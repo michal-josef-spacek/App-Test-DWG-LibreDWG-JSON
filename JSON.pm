@@ -36,13 +36,15 @@ sub run {
 	$self->{'_opts'} = {
 		'd' => undef,
 		'h' => 0,
+		'v' => 0,
 	};
-	if (! getopts('d:h', $self->{'_opts'}) || @ARGV < 1
+	if (! getopts('d:hv:', $self->{'_opts'}) || @ARGV < 1
 		|| $self->{'_opts'}->{'h'}) {
 
-		print STDERR "Usage: $0 [-d test_dir] [-h] [--version] dwg_file\n";
+		print STDERR "Usage: $0 [-d test_dir] [-h] [-v level] [--version] dwg_file\n";
 		print STDERR "\t-d test_dir\tTest directory (default is directory in system tmp).\n";
 		print STDERR "\t-h\t\tPrint help.\n";
+		print STDERR "\t-v level\tVerbosity level (default 0, max 9).\n";
 		print STDERR "\t--version\tPrint version.\n";
 		print STDERR "\tdwg_file\tAutoCAD DWG file to test.\n";
 		return 1;
@@ -62,23 +64,26 @@ sub run {
 	my $dwg_file_first = catfile($tmp_dir, 'first.dwg');
 	copy($self->{'_dwg_file'}, $dwg_file_first);
 
+	# Verbose level.
+	my $v = '-v'.$self->{'_opts'}->{'v'};
+
 	# Convert dwg file to JSON.
 	my $json_file_first = catfile($tmp_dir, 'first.json');
-	my $dwg_to_json_first = "$DR -o $json_file_first $dwg_file_first";
+	my $dwg_to_json_first = "$DR $v -o $json_file_first $dwg_file_first";
 	if ($self->_exec($dwg_to_json_first, 'dwg_to_json')) {
 		return 1;
 	}
 
 	# Convert JSON to dwg file.
 	my $dwg_file_second = catfile($tmp_dir, 'second.dwg');
-	my $json_to_dwg_first = "$DW -o $dwg_file_second $json_file_first";
+	my $json_to_dwg_first = "$DW $v -o $dwg_file_second $json_file_first";
 	if ($self->_exec($json_to_dwg_first, 'json_to_dwg')) {
 		return 1;
 	}
 
 	# Convert new dwg file to JSON.
 	my $json_file_second = catfile($tmp_dir, 'second.json');
-	my $dwg_to_json_second = "$DR -o $json_file_second $dwg_file_second";
+	my $dwg_to_json_second = "$DR $v -o $json_file_second $dwg_file_second";
 	if ($self->_exec($dwg_to_json_second, 'dwg_to_json_second')) {
 		return 1;
 	}
