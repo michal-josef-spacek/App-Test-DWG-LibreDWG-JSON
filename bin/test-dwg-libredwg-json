@@ -28,7 +28,7 @@ test-dwg-libredwg-json - Script to test DWG file by LibreDWG conversoions via JS
 
 =head1 SYNOPSIS
 
- test-dwg-libredwg-json [-d test_dir] [-h] [--version] dwg_file
+ test-dwg-libredwg-json [-d test_dir] [-h] [-v level] [--version] dwg_file
 
 =head1 ARGUMENTS
 
@@ -41,6 +41,12 @@ Test directory. If dosn't exist, create dir in system tmp.
 =item * C<-h>
 
 Print help.
+
+=item * C<-v level>
+
+Verbosity level.
+
+Default value is 0, max is 9.
 
 =item * C<--version>
 

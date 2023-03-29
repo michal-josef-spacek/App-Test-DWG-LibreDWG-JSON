@@ -3,7 +3,7 @@ NAME
     conversoions via JSON.
 
 SYNOPSIS
-     test-dwg-libredwg-json [-d test_dir] [-h] [--version] dwg_file
+     test-dwg-libredwg-json [-d test_dir] [-h] [-v level] [--version] dwg_file
 
 ARGUMENTS
     *       "-d test_dir"
@@ -13,6 +13,12 @@ ARGUMENTS
     *       "-h"
 
             Print help.
+
+    *       "-v level"
+
+            Verbosity level.
+
+            Default value is 0, max is 9.
 
     *       "--version"
 
