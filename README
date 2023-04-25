@@ -1,6 +1,6 @@
 NAME
-    test-dwg-libredwg-json - Script to test DWG file by LibreDWG
-    conversoions via JSON.
+    test-dwg-libredwg-json - Script to test DWG file by LibreDWG conversions
+    via JSON.
 
 SYNOPSIS
      test-dwg-libredwg-json [-d test_dir] [-h] [-v level] [--version] dwg_file
@@ -8,7 +8,7 @@ SYNOPSIS
 ARGUMENTS
     *       "-d test_dir"
 
-            Test directory. If dosn't exist, create dir in system tmp.
+            Test directory. If doesn't exist, create dir in system tmp.
 
     *       "-h"
 

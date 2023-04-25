@@ -24,7 +24,7 @@ __END__
 
 =head1 NAME
 
-test-dwg-libredwg-json - Script to test DWG file by LibreDWG conversoions via JSON.
+test-dwg-libredwg-json - Script to test DWG file by LibreDWG conversions via JSON.
 
 =head1 SYNOPSIS
 
@@ -36,7 +36,7 @@ test-dwg-libredwg-json - Script to test DWG file by LibreDWG conversoions via JS
 
 =item * C<-d test_dir>
 
-Test directory. If dosn't exist, create dir in system tmp.
+Test directory. If doesn't exist, create dir in system tmp.
 
 =item * C<-h>
 
