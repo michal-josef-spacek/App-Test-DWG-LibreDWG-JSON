@@ -134,7 +134,7 @@ __END__
 
 =head1 NAME
 
-App::Test::DWG::LibreDWG::JSON - Base class for cpan-search script.
+App::Test::DWG::LibreDWG::JSON - Base class for test-dwg-libredwg-json script.
 
 =head1 SYNOPSIS
 
