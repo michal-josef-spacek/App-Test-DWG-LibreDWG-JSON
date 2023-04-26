@@ -31,6 +31,10 @@ ARGUMENTS
 EXAMPLE
      test-dwg-libredwg-json __FILE__.dwg
 
+SEE ALSO
+    test-dwg-libredwg-dwgread
+        Script to test DWG files by LibreDWG dwgread command.
+
 REPOSITORY
     <https://github.com/michal-josef-spacek/App-Test-DWG-LibreDWG-JSON>
 

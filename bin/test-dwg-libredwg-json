@@ -62,6 +62,16 @@ AutoCAD DWG file to test.
 
  test-dwg-libredwg-json __FILE__.dwg
 
+=head1 SEE ALSO
+
+=over
+
+=item L<test-dwg-libredwg-dwgread>
+
+Script to test DWG files by LibreDWG dwgread command.
+
+=back
+
 =head1 REPOSITORY
 
 L<https://github.com/michal-josef-spacek/App-Test-DWG-LibreDWG-JSON>
