@@ -5,6 +5,13 @@ NAME
 SYNOPSIS
      test-dwg-libredwg-json [-d test_dir] [-h] [-v level] [--version] dwg_file
 
+DESCRIPTION
+    This tool is used to test libredwg JSON conversions on DWG file.
+
+    The process is to convert DWG file to LibreDWG JSON representation, back
+    to DWG and again to JSON. After this create diff between two JSON
+    representations to output.
+
 ARGUMENTS
     *       "-d test_dir"
 
