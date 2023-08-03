@@ -1,6 +1,7 @@
 0.02
  - Add description to tool doc.
  - Add detection of DWG file version and add to dwgwrite command.
+ - Add example to doc.
  - Add link to another script to doc.
  - Fix description of class in doc.
  - Fix typo in doc.

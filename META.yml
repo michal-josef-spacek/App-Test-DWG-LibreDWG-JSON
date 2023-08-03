@@ -23,6 +23,7 @@ meta-spec:
 name: App-Test-DWG-LibreDWG-JSON
 no_index:
   directory:
+    - examples
     - inc
     - t
     - xt

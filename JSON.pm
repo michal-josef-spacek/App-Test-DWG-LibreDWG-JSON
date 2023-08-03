@@ -194,24 +194,48 @@ Returns 1 for error, 0 for success.
 
 =head1 EXAMPLE
 
-=for comment filename=test_dwg_file.pl
+=for comment filename=test_dwg_file_without_issue.pl
 
  use strict;
  use warnings;
 
  use App::Test::DWG::LibreDWG::JSON;
+ use File::Temp qw(tempfile);
+ use IO::Barf qw(barf);
+ use MIME::Base64;
+
+ my $dwg_in_base64 = <<'END';
+ QUMxLjQwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgIAAAAAAAAAAAAAAAAAAAAAAAAA
+ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAChA
+ AAAAAAAAIkAAAAAAAAAYQKEoVK4NihJAAAAAAAAAAAChKFSuDYoiQAAAAAAAAAAA8D8AAAAAAAAA
+ AAAAAAABAAEAmJmZmZmZyT+YmZmZmZmpPwEADwAAAA8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
+ /wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/
+ AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
+ /wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/
+ AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A
+ AAAAAAAAAAAffplKebb0PwIABAABAAEAAAAAAAAAAAAAAAAAAAAAANA/mJmZmZmZuT8AAAAAAAAA
+ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+ AAAAAAAAAAAAAAAAAA==
+ END
+
+ my (undef, $tmp_file) = tempfile();
+ barf($tmp_file, decode_base64($dwg_in_base64));
 
  # Arguments.
  @ARGV = (
          '-v9',
-         'TODO_DWG_FILE',
+         $tmp_file,
  );
 
  # Run.
- exit App::Test::DWG::LibreDWG::JSON->new->run;
+ my $exit_code = App::Test::DWG::LibreDWG::JSON->new->run;
+
+ # Print out.
+ print "Exit code: $exit_code\n";
 
  # Output like:
- # TODO
+ # Exit code: 0
 
 =head1 DEPENDENCIES
 
