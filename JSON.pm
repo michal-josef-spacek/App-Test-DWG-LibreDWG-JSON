@@ -38,7 +38,7 @@ Readonly::Hash our %REL => (
 Readonly::Scalar our $DR => 'dwgread';
 Readonly::Scalar our $DW => 'dwgwrite';
 
-our $VERSION = 0.02;
+our $VERSION = 0.03;
 
 # Constructor.
 sub new {
@@ -266,6 +266,6 @@ BSD 2-Clause License
 
 =head1 VERSION
 
-0.02
+0.03
 
 =cut
