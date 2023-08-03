@@ -4,6 +4,7 @@
  - Add link to another script to doc.
  - Fix description of class in doc.
  - Fix typo in doc.
+ - Update Module::Install to 1.21 version.
 
 0.01 2023-03-30T01:53:21+02:00
  - First version.
