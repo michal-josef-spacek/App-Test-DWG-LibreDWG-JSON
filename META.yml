@@ -28,6 +28,7 @@ no_index:
     - t
     - xt
 requires:
+  CAD::AutoCAD::Detect: 0.02
   Capture::Tiny: 0
   File::Copy: 0
   File::Path: 0
