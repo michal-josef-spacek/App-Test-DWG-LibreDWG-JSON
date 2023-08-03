@@ -3,6 +3,7 @@ package App::Test::DWG::LibreDWG::JSON;
 use strict;
 use warnings;
 
+use CAD::AutoCAD::Detect qw(detect_dwg_file);
 use Capture::Tiny qw(capture);
 use File::Copy;
 use File::Path qw(mkpath);
@@ -12,6 +13,28 @@ use Getopt::Std;
 use IO::Barf qw(barf);
 use Readonly;
 
+Readonly::Hash our %REL => (
+	'MC0.0' => 'r1.1',
+	'AC1.2' => 'r1.2',
+	'AC1.40' => 'r1.4',
+	'AC1.50' => 'r2.0',
+	'AC2.10' => 'r2.10',
+	'AC1001' => 'r2.4',
+	'AC1002' => 'r2.5',
+	'AC1003' => 'r2.6',
+	'AC1004' => 'r9',
+	'AC1006' => 'r10',
+	'AC1009' => 'r11',
+	'AC1012' => 'r13',
+	'AC1013' => 'r13c3',
+	'AC1014' => 'r14',
+	'AC1015' => 'r2000',
+	'AC1018' => 'r2004',
+	'AC1021' => 'r2007',
+	'AC1024' => 'r2010',
+	'AC1027' => 'r2013',
+	'AC1032' => 'r2018',
+);
 Readonly::Scalar our $DR => 'dwgread';
 Readonly::Scalar our $DW => 'dwgwrite';
 
@@ -64,6 +87,14 @@ sub run {
 	my $dwg_file_first = catfile($tmp_dir, 'first.dwg');
 	copy($self->{'_dwg_file'}, $dwg_file_first);
 
+	# Get magic string.
+	my $magic = detect_dwg_file($dwg_file_first);
+	if (! exists $REL{$magic}) {
+		print STDERR "dwgwrite for magic '$magic' doesn't supported.\n";
+		return 1;
+	}
+	my $dwgwrite_version = $REL{$magic};
+
 	# Verbose level.
 	my $v = '-v'.$self->{'_opts'}->{'v'};
 
@@ -76,7 +107,7 @@ sub run {
 
 	# Convert JSON to dwg file.
 	my $dwg_file_second = catfile($tmp_dir, 'second.dwg');
-	my $json_to_dwg_first = "$DW $v -o $dwg_file_second $json_file_first";
+	my $json_to_dwg_first = "$DW --as $dwgwrite_version $v -o $dwg_file_second $json_file_first";
 	if ($self->_exec($json_to_dwg_first, 'json_to_dwg')) {
 		return 1;
 	}
