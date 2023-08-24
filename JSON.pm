@@ -59,14 +59,16 @@ sub run {
 	$self->{'_opts'} = {
 		'd' => undef,
 		'h' => 0,
+		'i' => 0,
 		'v' => 0,
 	};
-	if (! getopts('d:hv:', $self->{'_opts'}) || @ARGV < 1
+	if (! getopts('d:hiv:', $self->{'_opts'}) || @ARGV < 1
 		|| $self->{'_opts'}->{'h'}) {
 
-		print STDERR "Usage: $0 [-d test_dir] [-h] [-v level] [--version] dwg_file\n";
+		print STDERR "Usage: $0 [-d test_dir] [-h] [-i] [-v level] [--version] dwg_file\n";
 		print STDERR "\t-d test_dir\tTest directory (default is directory in system tmp).\n";
 		print STDERR "\t-h\t\tPrint help.\n";
+		print STDERR "\t-i\t\tIgnore errors.\n";
 		print STDERR "\t-v level\tVerbosity level (default 0, max 9).\n";
 		print STDERR "\t--version\tPrint version.\n";
 		print STDERR "\tdwg_file\tAutoCAD DWG file to test.\n";
@@ -143,6 +145,13 @@ sub _exec {
 			my $stderr_file = catfile($self->{'_tmp_dir'},
 				$log_prefix.'-stderr.log');
 			barf($stderr_file, $stderr);
+
+			# Report errors.
+			if (! $self->{'_opts'}->{'i'}) {
+				if (my @num = ($stderr =~ m/ERROR/gms)) {
+					print STDERR "Command '$command' has ".scalar @num." ERRORs\n";
+				}
+			}
 		}
 	}
 

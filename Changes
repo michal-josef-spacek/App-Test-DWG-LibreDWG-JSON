@@ -1,4 +1,5 @@
 0.04
+ - Report number of errors from commands.
 
 0.03 2023-08-04T01:18:06+02:00
  - Fix dependencies.
