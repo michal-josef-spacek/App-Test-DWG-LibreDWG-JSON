@@ -1,4 +1,5 @@
 0.05
+ - Add support for conversion tool paths rewrite.
 
 0.04 2023-08-24T10:57:28+02:00
  - Report number of errors from commands.

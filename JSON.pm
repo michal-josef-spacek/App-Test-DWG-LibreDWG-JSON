@@ -100,23 +100,26 @@ sub run {
 	# Verbose level.
 	my $v = '-v'.$self->{'_opts'}->{'v'};
 
+	my $dwgread = $ENV{'DWGREAD'} || $DR;
+	my $dwgwrite = $ENV{'DWGWRITE'} || $DW;
+
 	# Convert dwg file to JSON.
 	my $json_file_first = catfile($tmp_dir, 'first.json');
-	my $dwg_to_json_first = "$DR $v -o $json_file_first $dwg_file_first";
+	my $dwg_to_json_first = "$dwgread $v -o $json_file_first $dwg_file_first";
 	if ($self->_exec($dwg_to_json_first, 'dwg_to_json')) {
 		return 1;
 	}
 
 	# Convert JSON to dwg file.
 	my $dwg_file_second = catfile($tmp_dir, 'second.dwg');
-	my $json_to_dwg_first = "$DW --as $dwgwrite_version $v -o $dwg_file_second $json_file_first";
+	my $json_to_dwg_first = "$dwgwrite --as $dwgwrite_version $v -o $dwg_file_second $json_file_first";
 	if ($self->_exec($json_to_dwg_first, 'json_to_dwg')) {
 		return 1;
 	}
 
 	# Convert new dwg file to JSON.
 	my $json_file_second = catfile($tmp_dir, 'second.json');
-	my $dwg_to_json_second = "$DR $v -o $json_file_second $dwg_file_second";
+	my $dwg_to_json_second = "$dwgread $v -o $json_file_second $dwg_file_second";
 	if ($self->_exec($dwg_to_json_second, 'dwg_to_json_second')) {
 		return 1;
 	}
